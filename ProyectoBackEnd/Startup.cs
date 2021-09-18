@@ -51,7 +51,7 @@ namespace ProyectoBackEnd
                 app.UseSwagger();
                 app.UseSwaggerUI(c =>
                 {
-                    c.SwaggerEndpoint("v1/swagger.json", "MyAPI V1");
+                    c.SwaggerEndpoint("v1/swagger.json", "BackEnd Estudiantes");
                 });
             }
 
