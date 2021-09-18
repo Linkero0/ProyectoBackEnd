@@ -28,12 +28,15 @@ namespace ProyectoBackEnd
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-         
+
             services.AddDbContext<AppDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Conexion")));
             services.AddControllers();
+            services.AddMvc();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ProyectoBackEnd", Version = "v1" });
+                c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First()); //This line
+
             });
         }
 
@@ -43,8 +46,13 @@ namespace ProyectoBackEnd
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                // Enable middleware to serve generated Swagger as a JSON endpoint.
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ProyectoBackEnd v1"));
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("v1/swagger.json", "MyAPI V1");
+                });
             }
 
             app.UseHttpsRedirection();

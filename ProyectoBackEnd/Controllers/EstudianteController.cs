@@ -24,7 +24,7 @@ namespace ProyectoBackEnd.Controllers
         // GET: EstudianteController
 
         [HttpGet]
-        public ActionResult Get()
+        public ActionResult Get([FromQuery] Estudiante estudiantes)
         {
             try
             {
@@ -40,7 +40,7 @@ namespace ProyectoBackEnd.Controllers
         }
 
         [HttpGet("{id}", Name = "GetEstudents")]
-        public ActionResult Get(int id)
+        public ActionResult Get(int id, [FromQuery] Estudiante estudiantes)
         {
             try
             {
@@ -56,7 +56,7 @@ namespace ProyectoBackEnd.Controllers
 
         }
 
-        // [HttpPost]
+         [HttpPost]
         public ActionResult post([FromBody] Estudiante estudiante)
         {
             try
@@ -103,7 +103,7 @@ namespace ProyectoBackEnd.Controllers
 
 
         [HttpDelete("{id}")]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id, [FromBody] Estudiante estudiantes)
         {
             try
             {

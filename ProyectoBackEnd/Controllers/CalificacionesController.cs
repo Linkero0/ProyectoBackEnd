@@ -22,7 +22,7 @@ namespace ProyectoBackEnd.Controllers
         }
     // GET: CalificacionesController
     [HttpGet]
-        public ActionResult Get()
+        public ActionResult Get([FromQuery] Calificaciones calificaciones)
         {
             try
             {
@@ -38,7 +38,7 @@ namespace ProyectoBackEnd.Controllers
         }
 
         [HttpGet("{id}", Name = "GetScore")]
-        public ActionResult Get(int id)
+        public ActionResult Get([FromQuery] Calificaciones calificaciones,int id)
         {
             try
             {
@@ -54,7 +54,7 @@ namespace ProyectoBackEnd.Controllers
 
         }
 
-        // [HttpPost]
+        [HttpPost]
         public ActionResult post([FromBody] Calificaciones calificacion)
         {
             try
@@ -101,7 +101,7 @@ namespace ProyectoBackEnd.Controllers
 
 
         [HttpDelete("{id}")]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id, [FromBody] Calificaciones calificacio)
         {
             try
             {
@@ -128,7 +128,7 @@ namespace ProyectoBackEnd.Controllers
         }
 
         [HttpGet("getByIdEstudent/{id}")]
-        public ActionResult GetByStudent(int id)
+        public ActionResult GetByStudent(int id, [FromBody] Calificaciones calificacion)
         {
             try
             {
